@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
-import 'rxjs/Observable/throw';
 
 @Injectable()
 export class ProcessHttpmsgService {
