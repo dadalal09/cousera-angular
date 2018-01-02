@@ -24,7 +24,8 @@ import 'rxjs/add/observable/throw';
     },
   animations: [
     flyInOut(),
-    visibility()
+    visibility(),
+    expand()
   ]
 })
 
