@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dish } from '../shared/Dish';
+import { Dish } from '../shared/dish';
 
 import { Observable } from 'rxjs/Observable';
 import { baseURL } from '../shared/baseurl';
