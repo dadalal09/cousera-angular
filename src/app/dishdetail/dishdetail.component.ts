@@ -10,7 +10,7 @@ import { Dish } from '../shared/dish';
 import { DISHES } from '../shared/dishes';
 import { DishService} from '../services/dish.service';
 
-import 'rxjs/add/operator/Switchmap';
+import { switchMap } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
 
 
@@ -76,14 +76,21 @@ export class DishdetailComponent implements OnInit {
 
     this.dishservice.getDishIds().subscribe(dishIDs => this.dishIds = dishIDs,
       errmess => this.errMess = <any>errmess);
-    this.route.params.switchMap
-    ((params : Params) => {this.visibility = "hidden"; return this.dishservice.getDish(+params['id']); })
-    .subscribe(dish => {this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibility = "shown"},
-    errmess => this.errMess = <any>errmess);  
+    this.route.params.pipe(switchMap((params: Params) => {
+        this.visibility = 'hidden';
+        return this.dishservice.getDish(+params['id']);
+      }))
+    .subscribe(dish => {
+        this.dish = dish;
+        this.dishcopy = dish;
+        this.setPrevNext(dish.id);
+        this.visibility = 'shown';
+    },
+    errmess => this.errMess = <any>errmess);
   }
 
-  setPrevNext(dishId : number){
-    let index =  this.dishIds.indexOf(dishId);
+  setPrevNext(dishId: number) {
+    const index =  this.dishIds.indexOf(dishId);
     this.prev = this.dishIds[(this.dishIds.length + index -1)%this.dishIds.length];
     this.next = this.dishIds[(this.dishIds.length + index +1)%this.dishIds.length];
     console.log("this.prev " + this.prev + "this.next " + this.next);
@@ -111,7 +118,7 @@ export class DishdetailComponent implements OnInit {
     this.comment = this.dishdetailForm.value;
     console.log(this.comment);
  
-    //this.dish.comments.push(this.comment);
+    // this.dish.comments.push(this.comment);
     this.dishcopy.comments.push(this.comment);
     this.dishcopy.save()
     .subscribe(dish => this.dish = dish);
@@ -137,7 +144,7 @@ export class DishdetailComponent implements OnInit {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';
-          //console.log(" messages[ " + key + "] : " + messages[key]);
+          // console.log(" messages[ " + key + "] : " + messages[key]);
         }
       }
     }
