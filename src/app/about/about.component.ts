@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MatSpinner } from '@angular/material';
+import { MatSpinner, MatCard, MatLine, MatCardAvatar, MatCardHeader, MatCardImage, MatCardFooter, MatCardTitle, MatCardContent } from '@angular/material';
 
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
