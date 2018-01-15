@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatSpinner, MatCard, MatLine, MatCardAvatar, MatCardHeader, MatCardImage, MatCardFooter, MatCardTitle, MatCardContent } from '@angular/material';
@@ -27,7 +27,8 @@ export class AboutComponent implements OnInit {
 
   constructor(private leaderService: LeaderService,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location,
+    @Inject('BaseURL') private BaseURL) { }
 
 
   ngOnInit() {

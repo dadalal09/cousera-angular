@@ -70,10 +70,10 @@ fxLayoutGap="10px">
 </div> -->
 
 <div fxFlex>
-  <h2>Corporate Leadership</h2>
+  <h2>Corporate Leadership ahasdhjhsd</h2>
   <mat-list>
    <mat-list-item *ngFor="let leader of leaders">
-   <img mat-list-avatar src={{leader.image}} alt={{leader.name}}>
+   <img mat-list-avatar src="{{BaseURL + leader.image}}" alt="{{leader.name}}">
    <h1 mat-line> {{leader.name}} <small>{{leader.abbr}}</small></h1>
    <p mat-line>
    <span> {{leader.designation}} </span>
